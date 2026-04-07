@@ -1,3 +1,4 @@
+import LinkPill from '#/components/common/LinkPill'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -5,25 +6,38 @@ export const Route = createFileRoute('/')({ component: App })
 function App() {
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
-      <section className="island-shell rise-in relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14">
+      <section className="island-shell rise-in relative overflow-hidden rounded-4xl px-6 py-10 sm:px-10 sm:py-14">
         <div className="pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]" />
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]" />
         <p className="island-kicker mb-3">React 19+</p>
-        <h1 className="display-title mb-5 max-w-3xl text-4xl leading-[1.02] font-bold tracking-tight text-[var(--sea-ink)] sm:text-6xl">
+        <h1 className="display-title mb-5 max-w-3xl text-4xl leading-[1.02] font-bold tracking-tight text-(--sea-ink) sm:text-6xl">
           The End of Boilerplate
         </h1>
-        <p className="mb-8 max-w-2xl text-base text-[var(--sea-ink-soft)] sm:text-lg">
+        <p className="mb-8 max-w-2xl text-base text-(--sea-ink-soft) sm:text-lg">
           To demonstrate how React 19 (and subsequent 19.2 refinements)
           simplifies everyday React development, replaces complex hooks with
           native features, and improves overall developer experience.
         </p>
         <div className="flex flex-wrap gap-3">
-          <a
-            href="/"
-            className="rounded-full border border-[rgba(50,143,151,0.3)] bg-[rgba(79,184,178,0.14)] px-5 py-2.5 text-sm font-semibold text-[var(--lagoon-deep)] no-underline transition hover:-translate-y-0.5 hover:bg-[rgba(79,184,178,0.24)]"
-          >
-            About This Starter
-          </a>
+          <LinkPill href="/forward-ref-death">React Compiler</LinkPill>
+          <LinkPill href="/forward-ref-death">
+            The death of <code>forwardRef</code>
+          </LinkPill>
+          <LinkPill href="/context-as-provider">Context as a Provider</LinkPill>
+          <LinkPill href="/use">
+            {' '}
+            <code>use()</code>{' '}
+          </LinkPill>
+          <LinkPill href="/use">Native Asset Preloading</LinkPill>
+          <LinkPill href="/use">
+            <code>{'<Activity/>'}</code>
+          </LinkPill>
+          <LinkPill href="/use">
+            <code>useTransition</code>
+          </LinkPill>
+          <LinkPill href="/use">
+            The way of <code>useEffect</code>
+          </LinkPill>
         </div>
       </section>
 
