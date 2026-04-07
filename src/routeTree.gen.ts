@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
 import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
+import { Route as ContextAsProviderRouteImport } from './routes/context-as-provider'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ReactCompilerRoute = ReactCompilerRouteImport.update({
@@ -23,6 +24,11 @@ const DeathOfForwardRefRoute = DeathOfForwardRefRouteImport.update({
   path: '/death-of-forward-ref',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContextAsProviderRoute = ContextAsProviderRouteImport.update({
+  id: '/context-as-provider',
+  path: '/context-as-provider',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,43 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/death-of-forward-ref' | '/react-compiler'
+  fullPaths:
+    | '/'
+    | '/context-as-provider'
+    | '/death-of-forward-ref'
+    | '/react-compiler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/death-of-forward-ref' | '/react-compiler'
-  id: '__root__' | '/' | '/death-of-forward-ref' | '/react-compiler'
+  to: '/' | '/context-as-provider' | '/death-of-forward-ref' | '/react-compiler'
+  id:
+    | '__root__'
+    | '/'
+    | '/context-as-provider'
+    | '/death-of-forward-ref'
+    | '/react-compiler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContextAsProviderRoute: typeof ContextAsProviderRoute
   DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
 }
@@ -75,6 +94,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DeathOfForwardRefRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/context-as-provider': {
+      id: '/context-as-provider'
+      path: '/context-as-provider'
+      fullPath: '/context-as-provider'
+      preLoaderRoute: typeof ContextAsProviderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +113,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContextAsProviderRoute: ContextAsProviderRoute,
   DeathOfForwardRefRoute: DeathOfForwardRefRoute,
   ReactCompilerRoute: ReactCompilerRoute,
 }
