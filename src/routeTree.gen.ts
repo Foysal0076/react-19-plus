@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
+import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ReactCompilerRoute = ReactCompilerRouteImport.update({
   id: '/react-compiler',
   path: '/react-compiler',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeathOfForwardRefRoute = DeathOfForwardRefRouteImport.update({
+  id: '/death-of-forward-ref',
+  path: '/death-of-forward-ref',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/react-compiler'
+  fullPaths: '/' | '/death-of-forward-ref' | '/react-compiler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/react-compiler'
-  id: '__root__' | '/' | '/react-compiler'
+  to: '/' | '/death-of-forward-ref' | '/react-compiler'
+  id: '__root__' | '/' | '/death-of-forward-ref' | '/react-compiler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/react-compiler'
       fullPath: '/react-compiler'
       preLoaderRoute: typeof ReactCompilerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/death-of-forward-ref': {
+      id: '/death-of-forward-ref'
+      path: '/death-of-forward-ref'
+      fullPath: '/death-of-forward-ref'
+      preLoaderRoute: typeof DeathOfForwardRefRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DeathOfForwardRefRoute: DeathOfForwardRefRoute,
   ReactCompilerRoute: ReactCompilerRoute,
 }
 export const routeTree = rootRouteImport

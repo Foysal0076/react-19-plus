@@ -20,7 +20,7 @@ function App() {
         </p>
         <div className="flex flex-wrap gap-3">
           <LinkPill href="/react-compiler">React Compiler</LinkPill>
-          <LinkPill href="/forward-ref-death">
+          <LinkPill href="/death-of-forward-ref">
             The death of <code>forwardRef</code>
           </LinkPill>
           <LinkPill href="/context-as-provider">Context as a Provider</LinkPill>
