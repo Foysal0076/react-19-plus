@@ -1,4 +1,4 @@
-import LinkPill from '#/components/common/LinkPill'
+import LinkPill from '@/components/common/LinkPill'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -19,7 +19,7 @@ function App() {
           native features, and improves overall developer experience.
         </p>
         <div className="flex flex-wrap gap-3">
-          <LinkPill href="/forward-ref-death">React Compiler</LinkPill>
+          <LinkPill href="/react-compiler">React Compiler</LinkPill>
           <LinkPill href="/forward-ref-death">
             The death of <code>forwardRef</code>
           </LinkPill>
