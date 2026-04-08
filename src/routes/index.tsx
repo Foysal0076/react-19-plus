@@ -24,7 +24,7 @@ function App() {
             The death of <code>forwardRef</code>
           </LinkPill>
           <LinkPill href="/context-as-provider">Context as a Provider</LinkPill>
-          <LinkPill href="/use">
+          <LinkPill href="/use-hook">
             {' '}
             <code>use()</code>{' '}
           </LinkPill>

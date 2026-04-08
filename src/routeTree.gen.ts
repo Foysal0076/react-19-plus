@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UseHookRouteImport } from './routes/use-hook'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
 import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
 import { Route as ContextAsProviderRouteImport } from './routes/context-as-provider'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UseHookRoute = UseHookRouteImport.update({
+  id: '/use-hook',
+  path: '/use-hook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReactCompilerRoute = ReactCompilerRouteImport.update({
   id: '/react-compiler',
   path: '/react-compiler',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
+  '/use-hook': typeof UseHookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
+  '/use-hook': typeof UseHookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,6 +61,7 @@ export interface FileRoutesById {
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
+  '/use-hook': typeof UseHookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -61,14 +70,21 @@ export interface FileRouteTypes {
     | '/context-as-provider'
     | '/death-of-forward-ref'
     | '/react-compiler'
+    | '/use-hook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/context-as-provider' | '/death-of-forward-ref' | '/react-compiler'
+  to:
+    | '/'
+    | '/context-as-provider'
+    | '/death-of-forward-ref'
+    | '/react-compiler'
+    | '/use-hook'
   id:
     | '__root__'
     | '/'
     | '/context-as-provider'
     | '/death-of-forward-ref'
     | '/react-compiler'
+    | '/use-hook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,10 +92,18 @@ export interface RootRouteChildren {
   ContextAsProviderRoute: typeof ContextAsProviderRoute
   DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
+  UseHookRoute: typeof UseHookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/use-hook': {
+      id: '/use-hook'
+      path: '/use-hook'
+      fullPath: '/use-hook'
+      preLoaderRoute: typeof UseHookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/react-compiler': {
       id: '/react-compiler'
       path: '/react-compiler'
@@ -116,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContextAsProviderRoute: ContextAsProviderRoute,
   DeathOfForwardRefRoute: DeathOfForwardRefRoute,
   ReactCompilerRoute: ReactCompilerRoute,
+  UseHookRoute: UseHookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
