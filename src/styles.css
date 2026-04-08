@@ -157,7 +157,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-html,
+html {
+  height: 100%;
+}
+
 body,
 #app {
   min-height: 100%;
