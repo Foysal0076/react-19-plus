@@ -1,90 +1,43 @@
-Welcome to your new TanStack Start app! 
+# React 19+
 
-# Getting Started
+An interactive demo app showcasing React 19 and 19.2 features — how they simplify everyday development, replace complex patterns, and reduce boilerplate.
 
-To run this application:
+## Features Covered
+
+- **React Compiler** — auto-optimization, no more manual `useMemo`/`useCallback`
+- **`use()` Hook** — read Promises and Context directly in render
+- **Refs as Props** — pass refs without `forwardRef`
+- **Context as Provider** — render `<Context>` directly, no `.Provider` wrapper
+- **`<Activity />`** — preserve state for offscreen UI
+
+## Tech Stack
+
+- [React 19.2](https://react.dev/) · [TanStack Router](https://tanstack.com/router) · [TanStack Query](https://tanstack.com/query) · [Tailwind CSS v4](https://tailwindcss.com/) · [Vite](https://vite.dev/)
+
+## Getting Started
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-# Building For Production
+## Scripts
 
-To build this application for production:
+| Command        | Description                   |
+| -------------- | ----------------------------- |
+| `pnpm dev`     | Start dev server on port 3000 |
+| `pnpm build`   | Production build              |
+| `pnpm preview` | Preview production build      |
+| `pnpm test`    | Run tests with Vitest         |
+| `pnpm check`   | Format + lint fix             |
 
-```bash
-pnpm build
-```
-
-## Testing
-
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
-
-```bash
-pnpm test
-```
-
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-### Removing Tailwind CSS
-
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `pnpm add @tailwindcss/vite tailwindcss --dev`
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
-pnpm lint
-pnpm format
-pnpm check
-```
-
-
-## Shadcn
-
-Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
-
-```bash
-pnpm dlx shadcn@latest add button
-```
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
+````
 
 Then anywhere in your JSX you can use it like so:
 
 ```tsx
 <Link to="/about">About</Link>
-```
+````
 
 This will create a link that will navigate to the `/about` route.
 
@@ -145,11 +98,11 @@ const getServerTime = createServerFn({
 // Use in a component
 function MyComponent() {
   const [time, setTime] = useState('')
-  
+
   useEffect(() => {
     getServerTime().then(setTime)
   }, [])
-  
+
   return <div>Server time: {time}</div>
 }
 ```
