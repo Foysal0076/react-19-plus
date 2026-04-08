@@ -32,10 +32,16 @@ function App() {
           <LinkPill href="/activity-component">
             <code>{'<Activity/>'}</code>
           </LinkPill>
-          <LinkPill href="/use-transition-hook">
+          <LinkPill
+            href="/use-transition-hook"
+            className="pointer-events-none opacity-40"
+          >
             <code>useTransition</code>
           </LinkPill>
-          <LinkPill href="/use-effect-hook">
+          <LinkPill
+            href="/use-effect-hook"
+            className="pointer-events-none opacity-40"
+          >
             The way of <code>useEffect</code>
           </LinkPill>
         </div>
@@ -44,20 +50,20 @@ function App() {
       <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
           [
-            'Type-Safe Routing',
-            'Routes and links stay in sync across every page.',
+            'React Compiler',
+            'Auto-optimizes components, eliminating manual useMemo and useCallback calls.',
           ],
           [
-            'Server Functions',
-            'Call server code from your UI without creating API boilerplate.',
+            'use() Hook',
+            'Read promises and Context directly in render, replacing complex async patterns.',
           ],
           [
-            'Streaming by Default',
-            'Ship progressively rendered responses for faster experiences.',
+            'Refs as Props',
+            'Pass refs like any other prop — no more forwardRef boilerplate.',
           ],
           [
-            'Tailwind Native',
-            'Design quickly with utility-first styling and reusable tokens.',
+            'Context as Provider',
+            'Render <Context> directly as a provider, dropping the .Provider wrapper.',
           ],
         ].map(([title, desc], index) => (
           <article
@@ -65,10 +71,10 @@ function App() {
             className="island-shell feature-card rise-in rounded-2xl p-5"
             style={{ animationDelay: `${index * 90 + 80}ms` }}
           >
-            <h2 className="mb-2 text-base font-semibold text-[var(--sea-ink)]">
+            <h2 className="mb-2 text-base font-semibold text-(--sea-ink)">
               {title}
             </h2>
-            <p className="m-0 text-sm text-[var(--sea-ink-soft)]">{desc}</p>
+            <p className="m-0 text-sm text-(--sea-ink-soft)">{desc}</p>
           </article>
         ))}
       </section>

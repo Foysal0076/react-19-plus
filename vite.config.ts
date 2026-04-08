@@ -21,7 +21,7 @@ const config = defineConfig({
       },
     }),
   ],
-  base: process.env.VITE_BASE_PATH || '/react-19-plus',
+  base: process.env.VITE_BASE_PATH || '/',
 })
 
 export default config
