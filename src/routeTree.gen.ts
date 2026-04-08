@@ -13,6 +13,7 @@ import { Route as UseHookRouteImport } from './routes/use-hook'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
 import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
 import { Route as ContextAsProviderRouteImport } from './routes/context-as-provider'
+import { Route as ActivityComponentRouteImport } from './routes/activity-component'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UseHookRoute = UseHookRouteImport.update({
@@ -35,6 +36,11 @@ const ContextAsProviderRoute = ContextAsProviderRouteImport.update({
   path: '/context-as-provider',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivityComponentRoute = ActivityComponentRouteImport.update({
+  id: '/activity-component',
+  path: '/activity-component',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
     | '/react-compiler'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
     | '/react-compiler'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
     | '/react-compiler'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityComponentRoute: typeof ActivityComponentRoute
   ContextAsProviderRoute: typeof ContextAsProviderRoute
   DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContextAsProviderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity-component': {
+      id: '/activity-component'
+      path: '/activity-component'
+      fullPath: '/activity-component'
+      preLoaderRoute: typeof ActivityComponentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityComponentRoute: ActivityComponentRoute,
   ContextAsProviderRoute: ContextAsProviderRoute,
   DeathOfForwardRefRoute: DeathOfForwardRefRoute,
   ReactCompilerRoute: ReactCompilerRoute,

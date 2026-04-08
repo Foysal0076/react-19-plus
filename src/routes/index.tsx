@@ -28,14 +28,14 @@ function App() {
             {' '}
             <code>use()</code>{' '}
           </LinkPill>
-          <LinkPill href="/use">Native Asset Preloading</LinkPill>
-          <LinkPill href="/use">
+          {/* <LinkPill href="/use">Native Asset Preloading</LinkPill> */}
+          <LinkPill href="/activity-component">
             <code>{'<Activity/>'}</code>
           </LinkPill>
-          <LinkPill href="/use">
+          <LinkPill href="/use-transition-hook">
             <code>useTransition</code>
           </LinkPill>
-          <LinkPill href="/use">
+          <LinkPill href="/use-effect-hook">
             The way of <code>useEffect</code>
           </LinkPill>
         </div>
