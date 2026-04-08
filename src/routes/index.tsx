@@ -32,16 +32,10 @@ function App() {
           <LinkPill href="/activity-component">
             <code>{'<Activity/>'}</code>
           </LinkPill>
-          <LinkPill
-            href="/use-transition-hook"
-            className="pointer-events-none opacity-40"
-          >
+          <LinkPill href="/use-transition-hook">
             <code>useTransition</code>
           </LinkPill>
-          <LinkPill
-            href="/use-effect-hook"
-            className="pointer-events-none opacity-40"
-          >
+          <LinkPill href="/use-effect-hook">
             The way of <code>useEffect</code>
           </LinkPill>
         </div>

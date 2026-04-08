@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UseTransitionHookRouteImport } from './routes/use-transition-hook'
 import { Route as UseHookRouteImport } from './routes/use-hook'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
 import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
@@ -16,6 +17,11 @@ import { Route as ContextAsProviderRouteImport } from './routes/context-as-provi
 import { Route as ActivityComponentRouteImport } from './routes/activity-component'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UseTransitionHookRoute = UseTransitionHookRouteImport.update({
+  id: '/use-transition-hook',
+  path: '/use-transition-hook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UseHookRoute = UseHookRouteImport.update({
   id: '/use-hook',
   path: '/use-hook',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-hook': typeof UseHookRoute
+  '/use-transition-hook': typeof UseTransitionHookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-hook': typeof UseHookRoute
+  '/use-transition-hook': typeof UseTransitionHookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-hook': typeof UseHookRoute
+  '/use-transition-hook': typeof UseTransitionHookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/death-of-forward-ref'
     | '/react-compiler'
     | '/use-hook'
+    | '/use-transition-hook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/death-of-forward-ref'
     | '/react-compiler'
     | '/use-hook'
+    | '/use-transition-hook'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/death-of-forward-ref'
     | '/react-compiler'
     | '/use-hook'
+    | '/use-transition-hook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,10 +118,18 @@ export interface RootRouteChildren {
   DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
   UseHookRoute: typeof UseHookRoute
+  UseTransitionHookRoute: typeof UseTransitionHookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/use-transition-hook': {
+      id: '/use-transition-hook'
+      path: '/use-transition-hook'
+      fullPath: '/use-transition-hook'
+      preLoaderRoute: typeof UseTransitionHookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/use-hook': {
       id: '/use-hook'
       path: '/use-hook'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeathOfForwardRefRoute: DeathOfForwardRefRoute,
   ReactCompilerRoute: ReactCompilerRoute,
   UseHookRoute: UseHookRoute,
+  UseTransitionHookRoute: UseTransitionHookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
