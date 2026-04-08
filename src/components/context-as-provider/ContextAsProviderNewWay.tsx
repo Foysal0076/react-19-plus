@@ -4,6 +4,7 @@ import { createContext, useContext, useState } from 'react'
 type Theme = 'light' | 'dark'
 
 const ThemeContext = createContext<Theme>('light')
+ThemeContext.displayName = 'ThemeContext'
 
 function ThemedCard() {
   const theme = useContext(ThemeContext)

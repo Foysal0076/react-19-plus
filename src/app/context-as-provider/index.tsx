@@ -87,12 +87,12 @@ const comparisons = [
     after: 'Unchanged',
     highlight: false,
   },
-  {
-    concern: 'DevTools display',
-    before: 'Shows as MyCtx.Provider',
-    after: 'Shows as MyCtx',
-    highlight: false,
-  },
+  // {
+  //   concern: 'DevTools display',
+  //   before: 'Shows as MyCtx.Provider',
+  //   after: 'Shows as MyCtx',
+  //   highlight: false,
+  // },
   {
     concern: '.Provider still works?',
     before: '—',
@@ -135,7 +135,7 @@ export default function ContextAsProvider() {
           },
           {
             kicker: 'The Change',
-            title: 'Context IS the provider now',
+            title: 'Context is the provider now',
             body: 'React 19 makes the context object itself a valid JSX element. You can render <ThemeContext value={…}> directly. The .Provider form still works but is deprecated — the new form is shorter and less surprising.',
           },
           {

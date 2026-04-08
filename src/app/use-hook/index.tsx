@@ -187,7 +187,7 @@ export default function UseHookPage() {
           },
           {
             kicker: 'What makes it special',
-            title: 'Calleable anywhere in a component',
+            title: 'Callable anywhere in a component',
             body: "Unlike every other hook, use() can appear after conditional returns, inside if blocks, inside loops, and inside nested expressions — because it's not technically a hook. It's an API.",
           },
           {
