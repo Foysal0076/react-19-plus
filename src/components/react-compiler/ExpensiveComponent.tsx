@@ -11,6 +11,8 @@ const ExpensiveComponent = memo(function ExpensiveComponent({
   data,
   onClick,
 }: Props) {
+  'use no memo'
+
   const processedData = useMemo(() => {
     return expensiveProcessing(data)
   }, [data])
