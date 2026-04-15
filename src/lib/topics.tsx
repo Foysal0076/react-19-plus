@@ -54,17 +54,17 @@ export const TOPICS: Topic[] = [
     description:
       'Mark state updates as non‑blocking transitions, keeping the UI responsive during heavy renders.',
   },
-  {
-    href: '/use-effect-hook',
-    label: 'The way of useEffect',
-    pill: (
-      <>
-        The way of <code>useEffect</code>
-      </>
-    ),
-    description:
-      'Separate reactive from non‑reactive Effect logic with useEffectEvent.',
-  },
+  // {
+  //   href: '/use-effect-hook',
+  //   label: 'The way of useEffect',
+  //   pill: (
+  //     <>
+  //       The way of <code>useEffect</code>
+  //     </>
+  //   ),
+  //   description:
+  //     'Separate reactive from non‑reactive Effect logic with useEffectEvent.',
+  // },
   {
     href: '/miscellaneous',
     label: 'Miscellaneous',
