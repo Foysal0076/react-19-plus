@@ -1,4 +1,5 @@
 import LinkPill from '@/components/common/LinkPill'
+import { TOPICS } from '@/lib/topics'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -19,57 +20,27 @@ function App() {
           native features, and improves overall developer experience.
         </p>
         <div className="flex flex-wrap gap-3">
-          <LinkPill href="/react-compiler">React Compiler</LinkPill>
-          <LinkPill href="/death-of-forward-ref">
-            The death of <code>forwardRef</code>
-          </LinkPill>
-          <LinkPill href="/context-as-provider">Context as a Provider</LinkPill>
-          <LinkPill href="/use-hook">
-            {' '}
-            <code>use()</code>{' '}
-          </LinkPill>
-          {/* <LinkPill href="/use">Native Asset Preloading</LinkPill> */}
-          <LinkPill href="/activity-component">
-            <code>{'<Activity/>'}</code>
-          </LinkPill>
-          <LinkPill href="/use-transition-hook">
-            <code>useTransition</code>
-          </LinkPill>
-          <LinkPill href="/use-effect-hook">
-            The way of <code>useEffect</code>
-          </LinkPill>
-          <LinkPill href="/miscellaneous">Miscellaneous</LinkPill>
+          {TOPICS.map((topic) => (
+            <LinkPill key={topic.href} href={topic.href}>
+              {topic.pill}
+            </LinkPill>
+          ))}
         </div>
       </section>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          [
-            'React Compiler',
-            'Auto-optimizes components, eliminating manual useMemo and useCallback calls.',
-          ],
-          [
-            'use() Hook',
-            'Read promises and Context directly in render, replacing complex async patterns.',
-          ],
-          [
-            'Refs as Props',
-            'Pass refs like any other prop — no more forwardRef boilerplate.',
-          ],
-          [
-            'Context as Provider',
-            'Render <Context> directly as a provider, dropping the .Provider wrapper.',
-          ],
-        ].map(([title, desc], index) => (
+        {TOPICS.map((topic, index) => (
           <article
-            key={title}
+            key={topic.href}
             className="island-shell feature-card rise-in rounded-2xl p-5"
             style={{ animationDelay: `${index * 90 + 80}ms` }}
           >
             <h2 className="mb-2 text-base font-semibold text-(--sea-ink)">
-              {title}
+              {topic.label}
             </h2>
-            <p className="m-0 text-sm text-(--sea-ink-soft)">{desc}</p>
+            <p className="m-0 text-sm text-(--sea-ink-soft)">
+              {topic.description}
+            </p>
           </article>
         ))}
       </section>

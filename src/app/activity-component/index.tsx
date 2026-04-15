@@ -1,6 +1,7 @@
 import ActivityPreRenderDemo from '@/components/activity-component/ActivityPreRenderDemo'
 import ActivityStateDemo from '@/components/activity-component/ActivityStateDemo'
 import ClassicConditionalDemo from '@/components/activity-component/ClassicConditionalDemo'
+import PrevNextNav from '@/components/common/PrevNextNav'
 
 // ─── code snippets ────────────────────────────────────────────────────────────
 
@@ -532,6 +533,8 @@ export default function ActivityComponentPage() {
           </li>
         </ul>
       </section>
+
+      <PrevNextNav currentHref="/activity-component" />
     </main>
   )
 }

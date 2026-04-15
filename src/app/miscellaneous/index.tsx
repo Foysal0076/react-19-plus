@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PageNav from '@/components/miscellaneous/PageNav'
+import PrevNextNav from '@/components/common/PrevNextNav'
 
 // ─── code snippets ─────────────────────────────────────────────────────────────
 
@@ -591,6 +592,8 @@ export default function MiscellaneousPage() {
             </div>
           </div>
         </section>
+
+        <PrevNextNav currentHref="/miscellaneous" />
       </main>
     </>
   )

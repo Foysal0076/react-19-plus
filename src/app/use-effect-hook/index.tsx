@@ -1,4 +1,5 @@
 import ChatRoomDemo from '@/components/use-effect-hook/ChatRoomDemo'
+import PrevNextNav from '@/components/common/PrevNextNav'
 import {
   TimerWithEffectEvent,
   TimerWithoutEffectEvent,
@@ -402,6 +403,8 @@ export default function UseEffectHookPage() {
           </ul>
         </div>
       </section>
+
+      <PrevNextNav currentHref="/use-effect-hook" />
     </main>
   )
 }

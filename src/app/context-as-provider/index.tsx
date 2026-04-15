@@ -1,5 +1,6 @@
 import ContextAsProviderNewWay from '@/components/context-as-provider/ContextAsProviderNewWay'
 import ContextAsProviderOldWay from '@/components/context-as-provider/ContextAsProviderOldWay'
+import PrevNextNav from '@/components/common/PrevNextNav'
 
 // --------------- code snippets ---------------
 
@@ -357,6 +358,8 @@ export default function ContextAsProvider() {
           </li>
         </ul>
       </section>
+
+      <PrevNextNav currentHref="/context-as-provider" />
     </main>
   )
 }

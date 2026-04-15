@@ -1,6 +1,7 @@
 import ExpensiveComponent from '@/components/react-compiler/ExpensiveComponent'
 import ExpensiveComponentReactCompiler from '@/components/react-compiler/ExpensiveComponentReactCompiler'
 import UnoptimizedComponent from '@/components/react-compiler/UnoptimizedComponent'
+import PrevNextNav from '@/components/common/PrevNextNav'
 import { useState, useCallback } from 'react'
 
 // --------------- code snippets ---------------
@@ -601,6 +602,8 @@ export default function ReactCompilerPage() {
           </li>
         </ul>
       </section>
+
+      <PrevNextNav currentHref="/react-compiler" />
     </main>
   )
 }

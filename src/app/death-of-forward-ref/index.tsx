@@ -1,5 +1,6 @@
 import ForwardRefNewWay from '@/components/forward-ref/ForwardRefNewWay'
 import ForwardRefOldWay from '@/components/forward-ref/ForwardRefOldWay'
+import PrevNextNav from '@/components/common/PrevNextNav'
 import { useRef, useState } from 'react'
 
 // --------------- code snippets ---------------
@@ -412,6 +413,8 @@ export default function DeathOfForwardRef() {
           </li>
         </ul>
       </section>
+
+      <PrevNextNav currentHref="/death-of-forward-ref" />
     </main>
   )
 }

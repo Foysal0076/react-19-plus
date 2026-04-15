@@ -1,5 +1,6 @@
 import UseHookContextDemo from '@/components/use-hook/UseHookContextDemo'
 import UseHookPromiseDemo from '@/components/use-hook/UseHookPromiseDemo'
+import PrevNextNav from '@/components/common/PrevNextNav'
 
 // --------------- code snippets ---------------
 
@@ -538,6 +539,8 @@ export default function UseHookPage() {
           </li>
         </ul>
       </section>
+
+      <PrevNextNav currentHref="/use-hook" />
     </main>
   )
 }

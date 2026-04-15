@@ -1,6 +1,7 @@
 import AsyncActionDemo from '@/components/use-transition-hook/AsyncActionDemo'
 import BlockingSearchDemo from '@/components/use-transition-hook/BlockingSearchDemo'
 import TransitionSearchDemo from '@/components/use-transition-hook/TransitionSearchDemo'
+import PrevNextNav from '@/components/common/PrevNextNav'
 
 // ─── code snippets ────────────────────────────────────────────────────────────
 
@@ -392,6 +393,8 @@ export default function UseTransitionHookPage() {
           </ul>
         </div>
       </section>
+
+      <PrevNextNav currentHref="/use-transition-hook" />
     </main>
   )
 }
