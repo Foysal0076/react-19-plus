@@ -2,6 +2,8 @@ import ActivityPreRenderDemo from '@/components/activity-component/ActivityPreRe
 import ActivityStateDemo from '@/components/activity-component/ActivityStateDemo'
 import ClassicConditionalDemo from '@/components/activity-component/ClassicConditionalDemo'
 import PrevNextNav from '@/components/common/PrevNextNav'
+import HiddenUseEffect from '@/components/HiddenUseEffect'
+import { Activity, useState } from 'react'
 
 // ─── code snippets ────────────────────────────────────────────────────────────
 
@@ -94,6 +96,48 @@ function VideoTab() {
   return <video ref={ref} controls src="..." />
 }`
 
+const codeUseEffect = `// Effects are NOT preserved when Activity hides a component.
+// The cleanup function runs on hide — just like unmount.
+// The effect re-runs from scratch when the component becomes visible again.
+
+import { useEffect, useState } from 'react'
+
+function CounterWithEffect() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>
+
+    // Cleanup runs when Activity hides → counter pauses.
+    // Effect re-runs when Activity shows → counter restarts from 0.
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => setCount((n) => n + 1), 1000)
+    }, 1000)
+
+    return () => {
+      clearTimeout(timeout)
+      clearInterval(interval)
+    }
+  }, [])
+
+  return <p>Count: {count}</p>
+}
+
+function App() {
+  const [hidden, setHidden] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setHidden((h) => !h)}>
+        {hidden ? 'Show' : 'Hide'}
+      </button>
+      <Activity mode={hidden ? 'hidden' : 'visible'}>
+        <CounterWithEffect />
+      </Activity>
+    </>
+  )
+}`
+
 // ─── comparison rows ──────────────────────────────────────────────────────────
 
 const comparisons = [
@@ -166,6 +210,26 @@ const useCases = [
     positive: false,
   },
 ]
+
+// ─── use-effect demo ────────────────────────────────────────────────────────
+
+function UseEffectActivityDemo() {
+  const [hidden, setHidden] = useState(false)
+
+  return (
+    <div>
+      <button
+        onClick={() => setHidden((prev) => !prev)}
+        className="rounded-lg border border-(--line) bg-(--surface) px-4 py-2 text-sm font-semibold text-(--sea-ink) transition hover:border-(--lagoon-deep) hover:text-(--lagoon-deep) mb-4"
+      >
+        {hidden ? 'Show' : 'Hide'} Component
+      </button>
+      <Activity mode={hidden ? 'hidden' : 'visible'}>
+        <HiddenUseEffect />
+      </Activity>
+    </div>
+  )
+}
 
 // ─── page ─────────────────────────────────────────────────────────────────────
 
@@ -349,10 +413,58 @@ export default function ActivityComponentPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          DEMO 3 — Side-effect gotcha
+          DEMO 3 — useEffect lifecycle
       ═══════════════════════════════════════════════════════════════════════ */}
       <section className="mt-14">
-        <p className="island-kicker mb-2">Demo 3 of 3 · Gotcha</p>
+        <p className="island-kicker mb-2">Demo 3 of 4</p>
+        <h2 className="display-title mb-1 text-2xl font-bold text-(--sea-ink) sm:text-3xl">
+          useEffect cleanup on hide, restart on show
+        </h2>
+        <p className="mb-6 text-sm text-(--sea-ink-soft)">
+          Unlike state,{' '}
+          <strong className="text-(--sea-ink)">
+            effects are not preserved
+          </strong>{' '}
+          when an <code>{'<Activity>'}</code> boundary hides. The cleanup
+          function runs as soon as the component is hidden — preventing phantom
+          intervals, subscriptions, or listeners from running in the background.
+          When the component becomes visible again, the effect re-runs from
+          scratch.
+        </p>
+
+        <div className="island-shell mb-5 flex flex-col overflow-hidden rounded-2xl">
+          <div className="flex items-center gap-2 border-b border-(--line) px-5 py-3">
+            <span className="h-2.5 w-2.5 rounded-full bg-(--lagoon)" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-(--sea-ink-soft)">
+              Effect cleanup on hide · restarts on show
+            </span>
+          </div>
+          <pre
+            className="m-0 overflow-x-auto p-5 text-xs leading-relaxed"
+            style={{ background: '#1d2e45', color: '#e8efff', borderRadius: 0 }}
+          >
+            <code>{codeUseEffect}</code>
+          </pre>
+        </div>
+
+        <div className="island-shell overflow-hidden rounded-2xl">
+          <div className="flex items-center gap-2 border-b border-(--line) bg-teal-50/40 px-5 py-3 dark:bg-teal-950/10">
+            <span className="h-2.5 w-2.5 rounded-full bg-(--lagoon)" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-(--lagoon-deep)">
+              Live — hide the component to pause the counter
+            </span>
+          </div>
+          <div className="p-5">
+            <UseEffectActivityDemo />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════════
+          DEMO 4 — Side-effect gotcha
+      ═══════════════════════════════════════════════════════════════════════ */}
+      <section className="mt-14">
+        <p className="island-kicker mb-2">Demo 4 of 4 · Gotcha</p>
         <h2 className="display-title mb-1 text-2xl font-bold text-(--sea-ink) sm:text-3xl">
           DOM side-effects still run when hidden
         </h2>

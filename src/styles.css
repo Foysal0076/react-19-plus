@@ -181,10 +181,11 @@ body {
     ),
     linear-gradient(
       180deg,
-      color-mix(in oklab, var(--sand) 68%, white) 0%,
+      color-mix(in oklab, var(--sand) 70%, white) 0%,
       var(--foam) 44%,
       var(--bg-base) 100%
     );
+  background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -196,7 +197,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.28;
+  opacity: 0.48;
   background:
     radial-gradient(
       circle at 20% 15%,
