@@ -65,12 +65,14 @@ function PostList({ postsPromise }) {
 }
 
 function App() {
+  const postsPromise = fetchPosts()  // returns a Promise
+
   return (
     // ③ ErrorBoundary catches rejected Promises automatically.
     //    No try-catch inside the component needed.
     <ErrorBoundary fallback={<p>Something went wrong</p>}>
       <Suspense fallback={<Skeleton />}>
-        <PostList postsPromise={fetchPosts()} />
+        <PostList postsPromise={postsPromise} />
       </Suspense>
     </ErrorBoundary>
   )
