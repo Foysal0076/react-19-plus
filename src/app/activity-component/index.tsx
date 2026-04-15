@@ -161,7 +161,6 @@ const useCases = [
       'The hidden content is never coming back (navigation away, deleted item)',
       'You intentionally want state to reset on re-show',
       '`<video>` / `<audio>` / `<iframe>` — DOM side-effects need manual cleanup',
-      "The component renders plain text only — Activity can't hide text nodes",
     ],
     positive: false,
   },

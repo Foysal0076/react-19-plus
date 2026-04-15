@@ -13,6 +13,7 @@ import { Route as UseTransitionHookRouteImport } from './routes/use-transition-h
 import { Route as UseHookRouteImport } from './routes/use-hook'
 import { Route as UseEffectHookRouteImport } from './routes/use-effect-hook'
 import { Route as ReactCompilerRouteImport } from './routes/react-compiler'
+import { Route as MiscellaneousRouteImport } from './routes/miscellaneous'
 import { Route as DeathOfForwardRefRouteImport } from './routes/death-of-forward-ref'
 import { Route as ContextAsProviderRouteImport } from './routes/context-as-provider'
 import { Route as ActivityComponentRouteImport } from './routes/activity-component'
@@ -36,6 +37,11 @@ const UseEffectHookRoute = UseEffectHookRouteImport.update({
 const ReactCompilerRoute = ReactCompilerRouteImport.update({
   id: '/react-compiler',
   path: '/react-compiler',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MiscellaneousRoute = MiscellaneousRouteImport.update({
+  id: '/miscellaneous',
+  path: '/miscellaneous',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeathOfForwardRefRoute = DeathOfForwardRefRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
+  '/miscellaneous': typeof MiscellaneousRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-effect-hook': typeof UseEffectHookRoute
   '/use-hook': typeof UseHookRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
+  '/miscellaneous': typeof MiscellaneousRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-effect-hook': typeof UseEffectHookRoute
   '/use-hook': typeof UseHookRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/activity-component': typeof ActivityComponentRoute
   '/context-as-provider': typeof ContextAsProviderRoute
   '/death-of-forward-ref': typeof DeathOfForwardRefRoute
+  '/miscellaneous': typeof MiscellaneousRoute
   '/react-compiler': typeof ReactCompilerRoute
   '/use-effect-hook': typeof UseEffectHookRoute
   '/use-hook': typeof UseHookRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
+    | '/miscellaneous'
     | '/react-compiler'
     | '/use-effect-hook'
     | '/use-hook'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
+    | '/miscellaneous'
     | '/react-compiler'
     | '/use-effect-hook'
     | '/use-hook'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/activity-component'
     | '/context-as-provider'
     | '/death-of-forward-ref'
+    | '/miscellaneous'
     | '/react-compiler'
     | '/use-effect-hook'
     | '/use-hook'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   ActivityComponentRoute: typeof ActivityComponentRoute
   ContextAsProviderRoute: typeof ContextAsProviderRoute
   DeathOfForwardRefRoute: typeof DeathOfForwardRefRoute
+  MiscellaneousRoute: typeof MiscellaneousRoute
   ReactCompilerRoute: typeof ReactCompilerRoute
   UseEffectHookRoute: typeof UseEffectHookRoute
   UseHookRoute: typeof UseHookRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/react-compiler'
       fullPath: '/react-compiler'
       preLoaderRoute: typeof ReactCompilerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/miscellaneous': {
+      id: '/miscellaneous'
+      path: '/miscellaneous'
+      fullPath: '/miscellaneous'
+      preLoaderRoute: typeof MiscellaneousRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/death-of-forward-ref': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   ActivityComponentRoute: ActivityComponentRoute,
   ContextAsProviderRoute: ContextAsProviderRoute,
   DeathOfForwardRefRoute: DeathOfForwardRefRoute,
+  MiscellaneousRoute: MiscellaneousRoute,
   ReactCompilerRoute: ReactCompilerRoute,
   UseEffectHookRoute: UseEffectHookRoute,
   UseHookRoute: UseHookRoute,
