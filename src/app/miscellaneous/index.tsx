@@ -110,6 +110,7 @@ function LiveMetaDemo() {
         <>
           <meta name="keywords" content={keywords} />
           <meta name="description" content={description} />
+          <title>Miscellaneous Updates</title>
         </>
       )}
 
